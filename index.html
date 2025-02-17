@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Siva Sai Ram Madanaboyina - Portfolio</title>
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      color: #fff;
+      background: linear-gradient(135deg, #000000, #333333);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: #ff6f61; /* Coral color for links */
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #fff; /* White on hover */
+    }
+
+    /* Header */
+    header {
+      text-align: left;
+      padding: 100px 20px;
+      background: rgba(0, 0, 0, 0.7); /* Semi-transparent overlay */
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap; /* Ensures responsiveness */
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: bold;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-size: 1.2rem;
+      color: #ddd;
+      animation: fadeIn 2.5s ease-in-out;
+    }
+
+    /* Profile Photo */
+    .profile-photo {
+      width: 300px; /* Adjust as needed */
+      height: 400px; /* Adjust as needed */
+      border-radius: 20px; /* Curved edges */
+      border: 4px solid #fff;
+      position: relative;
+      overflow: hidden;
+      animation: fadeIn 3s ease-in-out;
+      margin-left: 20px; /* Move photo slightly to the left */
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    /* Photo Merging Effect */
+    .profile-photo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+      transform: skewX(-20deg);
+    }
+
+    /* Navigation */
+    nav {
+      background: rgba(0, 0, 0, 0.8); /* Semi-transparent overlay */
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 20px;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff6f61; /* Coral color on hover */
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+      border-radius: 10px;
+      backdrop-filter: blur(10px); /* Blur effect */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      color: #fff;
+      border-bottom: 2px solid #ff6f61; /* Coral color for headings */
+      padding-bottom: 10px;
+      font-size: 2rem;
+    }
+
+    /* About Me */
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ddd;
+    }
+
+    /* Work Experience */
+    .experience-item {
+      margin-bottom: 30px;
+    }
+
+    .experience-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .experience-item p {
+      margin: 0;
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    /* Projects */
+    .project-card {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px); /* Lift effect on hover */
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      color: #fff;
+    }
+
+    .project-card p {
+      margin: 0;
+      font-size: 1rem;
+      color: #ddd;
+    }
+
+    .project-card a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #ff6f61; /* Coral color for links */
+      font-weight: bold;
+    }
+
+    /* Skills */
+    #skills ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #skills ul li {
+      background: rgba(255, 255, 255, 0.1);
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      color: #ddd;
+      transition: transform 0.3s ease;
+    }
+
+    #skills ul li:hover {
+      transform: translateX(10px); /* Slide effect on hover */
+    }
+
+    /* Contact Section */
+    #contact p {
+      font-size: 1.1rem;
+      color: #ddd;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-info a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info a:hover {
+      color: #ff6f61; /* Coral color on hover */
+    }
+
+    .contact-info i {
+      font-size: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(0, 0, 0, 0.8); /* Semi-transparent overlay */
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    /* Social Media Icons */
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      color: #fff;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #ff6f61; /* Coral color on hover */
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 20px;
+      }
+
+      .profile-photo {
+        width: 200px;
+        height: 250px;
+        margin: 20px auto;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+
+      section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div>
+      <h1>Siva Sai Ram Madanaboyina</h1>
+      <p>Aspiring Software Developer | Passionate about Coding and Problem-Solving</p>
+    </div>
+    <div class="profile-photo">
+      <img src="TPIRE4722.JPG" alt="Siva Sai Ram Madanaboyina - Profile Photo">
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- About Me Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      Hi, I’m Siva Sai Ram Madanaboyina! I’m a recent graduate in Computer Science with a passion for coding and problem-solving. 
+      I enjoy building web applications, exploring new technologies, and turning ideas into reality. I’m always eager to learn 
+      and take on new challenges.
+    </p>
+    <p>
+      During my academic journey, I worked on several projects that helped me develop strong skills in programming, web development, 
+      and teamwork. I’m now looking for opportunities to apply my knowledge and grow as a software developer.
+    </p>
+  </section>
+
+  <!-- Work Experience Section -->
+  <section id="experience">
+    <h2>Work Experience</h2>
+    <div class="experience-item">
+      <h3>Frontend Developer | Secure Voting System</h3>
+      <p><strong>2023 - Present</strong></p>
+      <p>
+        Designed and implemented a user-friendly and secure interface for an online voting platform leveraging blockchain technology. 
+        Developed intuitive login and signup pages with real-time validation, designed a responsive voting interface, and built an 
+        election setup feature for administrators. Collaborated with backend developers to integrate blockchain technology, ensuring 
+        secure and tamper-proof vote recording. Enhanced user experience with a visually appealing and intuitive design, improving 
+        user engagement and trust.
+      </p>
+    </div>
+    <div class="experience-item">
+      <h3>Web Developer | E-Commerce Website</h3>
+      <p><strong>2022 - 2023</strong></p>
+      <p>
+        Developed a fully functional e-commerce website using HTML, CSS, and JavaScript. Integrated a MySQL database to manage 
+        product listings and user data, ensuring seamless functionality and user experience.
+      </p>
+    </div>
+    <div class="experience-item">
+      <h3>Frontend Developer | Weather App</h3>
+      <p><strong>2021 - 2022</strong></p>
+      <p>
+        Built a weather application using React.js and OpenWeather API, allowing users to search for weather details by city name. 
+        Focused on creating a clean and responsive user interface.
+      </p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-card">
+      <h3>Secure Voting System</h3>
+      <p>
+        <strong>Role:</strong> Frontend Developer<br>
+        <strong>Technologies Used:</strong> HTML, CSS, JavaScript, Django, Responsive Design<br>
+        <strong>Description:</strong> Designed and implemented a user-friendly and secure interface for an online voting platform leveraging blockchain technology.
+      </p>
+      <a href="#">View Project</a>
+    </div>
+    <div class="project-card">
+      <h3>E-Commerce Website</h3>
+      <p>Developed a fully functional e-commerce website using HTML, CSS, and JavaScript. Integrated a MySQL database to manage product listings and user data.</p>
+      <a href="#">View Project</a>
+    </div>
+    <div class="project-card">
+      <h3>Weather App</h3>
+      <p>Built a weather application using React.js and OpenWeather API. Users can search for weather details by city name.</p>
+      <a href="#">View Project</a>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Programming Languages</strong>: Python, Java, C++</li>
+      <li><strong>Web Development</strong>: HTML, CSS, JavaScript, React.js</li>
+      <li><strong>Tools</strong>: Git, Visual Studio Code, MySQL</li>
+      <li><strong>Soft Skills</strong>: Communication, Teamwork, Problem-Solving</li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Feel free to reach out to me! I’d love to connect and discuss opportunities.</p>
+    <div class="contact-info">
+      <a href="mailto:siva@example.com">
+        <i class="fas fa-envelope"></i> siva@example.com
+      </a>
+      <a href="https://www.linkedin.com/in/siva-sai-ram-madanaboyina-18b001305/" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn/sivasairam
+      </a>
+      <a href="#" target="_blank">
+        <i class="fab fa-github"></i> github.com/sivasairam
+      </a>
+      <a href="tel:+911234567890">
+        <i class="fas fa-phone"></i> +91 12345 67890
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2023 Siva Sai Ram Madanaboyina. All rights reserved.</p>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/siva-sai-ram-madanaboyina-18b001305/" target="_blank">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="#" target="_blank">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Scroll Effects -->
+  <script>
+    // Add scroll animations
+    const sections = document.querySelectorAll('section');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
